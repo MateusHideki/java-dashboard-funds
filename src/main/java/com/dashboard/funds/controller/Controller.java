@@ -25,4 +25,9 @@ public class Controller {
 	public FundResponse fundRegistration(@RequestBody FundRequest fund) {
 		return fundservice.fundPost(fund);
 	}
+	
+	@GetMapping(value = "/dividendo10")
+	public FundResponse getDiv10() {
+		return fundservice.fundDiv10();
+	}
 }

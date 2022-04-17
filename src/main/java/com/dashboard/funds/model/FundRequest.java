@@ -3,14 +3,24 @@ package com.dashboard.funds.model;
 public class FundRequest {
 
 	private String ticker;
-	private Double quant;
+	private Integer quant;
 	private Double unitValue;
 	private String nameCompany;
 	private Double min52weeks;
 	private Double max52weeks;
 	private Double dividendYield;
+	private Double dividend;
 	
-	public Double getQuant() {
+	
+	public Double getDividend() {
+		return dividend;
+	}
+
+	public void setDividend(Double dividend) {
+		this.dividend = dividend;
+	}
+
+	public Integer getQuant() {
 		return quant;
 	}
 
@@ -46,7 +56,7 @@ public class FundRequest {
 		this.dividendYield = dividendYield;
 	}
 
-	public void setQuant(Double quant) {
+	public void setQuant(Integer quant) {
 		this.quant = quant;
 	}
 
