@@ -23,7 +23,7 @@ public class FundService {
 	}
 	
 
-	public List<Dividendo> fundDiv10() {
+	public List<Dividendo> fundDiv10(Integer periodo) {
 		repository.criaFundo();
 		FundResponse fundoInic = repository.getFund();
 		List<Dividendo> lista = new ArrayList<>();
@@ -33,7 +33,7 @@ public class FundService {
 		Double sobra = 0d;
 		Integer quantComprada = 0;
 
-		for(Integer i = 0; i < 120; i++) {
+		for(Integer i = 0; i < periodo; i++) {
 			dividendoMesAtual = quantMesAtual * fundoInic.getDividend();
 			sobra += dividendoMesAtual % fundoInic.getUnitValue();
 			quantComprada = (int) (dividendoMesAtual / fundoInic.getUnitValue());

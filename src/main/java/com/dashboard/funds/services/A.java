@@ -9,7 +9,7 @@ public class A {
 
 	public static void main(String[] args) {
 
-		  int decimalPlaces = 0 ;
+			int decimalPlaces = 0 ;
 		    BigDecimal bd = new BigDecimal("553456789.0663456890");
 		    bd = bd.setScale(decimalPlaces, RoundingMode.FLOOR);
 		    System.out.println(bd);

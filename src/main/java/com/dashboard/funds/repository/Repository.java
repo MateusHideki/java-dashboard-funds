@@ -24,25 +24,25 @@ public class Repository {
 	
 	public void criaFundo() {
 		
-		String json = "{\r\n"
-				+ "	\"ticker\": \"IRDM11\",\r\n"
-				+ "	\"quant\": 110,\r\n"
-				+ "	\"unitValue\": 108.11, \r\n"
-				+ "	\"nameCompany\": \"IRIDIUM RECEBÍVEIS IMOBILIÁRIOS\",\r\n"
-				+ "	\"min52weeks\": 101.00,\r\n"
-				+ "	\"max52weeks\": 141.35,\r\n"
-				+ "	\"dividendYield\": 12.86,\r\n"
-				+ "	\"dividend\": 1.18\r\n"
-				+ "}";
-		FundResponse convertedObject =new Gson().fromJson(json, FundResponse.class);
-		fund = convertedObject;
-//		fund.setDividend(1.18);
-//		fund.setDividendYield(12.86);
-//		fund.setMax52weeks(141.35);
-//		fund.setMin52weeks(101.00);
-//		fund.setNameCompany("IRIDIUM RECEBÍVEIS IMOBILIÁRIOS");
-//		fund.setTicker("IRDM11");
-//		fund.setUnitValue(108.11);
-//		fund.setQuant(110);
+//		String json = "{\r\n"
+//				+ "	\"ticker\": \"IRDM11\",\r\n"
+//				+ "	\"quant\": 110,\r\n"
+//				+ "	\"unitValue\": 108.11, \r\n"
+//				+ "	\"nameCompany\": \"IRIDIUM RECEBÍVEIS IMOBILIÁRIOS\",\r\n"
+//				+ "	\"min52weeks\": 101.00,\r\n"
+//				+ "	\"max52weeks\": 141.35,\r\n"
+//				+ "	\"dividendYield\": 12.86,\r\n"
+//				+ "	\"dividend\": 1.18\r\n"
+//				+ "}";
+//		FundResponse convertedObject =new Gson().fromJson(json, FundResponse.class);
+//		fund = convertedObject;
+		fund.setDividend(1.18);
+		fund.setDividendYield(12.86);
+		fund.setMax52weeks(141.35);
+		fund.setMin52weeks(101.00);
+		fund.setNameCompany("IRIDIUM RECEBÍVEIS IMOBILIÁRIOS");
+		fund.setTicker("IRDM11");
+		fund.setUnitValue(108.11);
+		fund.setQuant(110);
 	}
 }
