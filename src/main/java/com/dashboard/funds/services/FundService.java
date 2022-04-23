@@ -1,8 +1,13 @@
 package com.dashboard.funds.services;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.dashboard.funds.model.Dividendo;
 import com.dashboard.funds.model.FundRequest;
 import com.dashboard.funds.model.FundResponse;
 import com.dashboard.funds.repository.Repository;
@@ -11,20 +16,24 @@ import com.dashboard.funds.repository.Repository;
 public class FundService {
 
 	@Autowired
-	private Repository respository ;
+	private Repository repository ;
 	
 	public FundResponse fundGet() {
-		return respository.getFund();
+		return repository.getFund();
 	}
+	
 
-	public FundResponse fundDiv10() {
-		FundResponse fundoInic = respository.getFund();
+	public List<Dividendo> fundDiv10() {
+		repository.criaFundo();
+		FundResponse fundoInic = repository.getFund();
+		List<Dividendo> lista = new ArrayList<>();
 		Double dividendoMesAtual = 0d;
+		BigDecimal a = new BigDecimal(0);
 		Integer quantMesAtual = fundoInic.getQuant();
 		Double sobra = 0d;
 		Integer quantComprada = 0;
-		
-		for(int i = 0; i < 5; i++) {
+
+		for(Integer i = 0; i < 120; i++) {
 			dividendoMesAtual = quantMesAtual * fundoInic.getDividend();
 			sobra += dividendoMesAtual % fundoInic.getUnitValue();
 			quantComprada = (int) (dividendoMesAtual / fundoInic.getUnitValue());
@@ -34,10 +43,10 @@ public class FundService {
 			}
 			
 			quantMesAtual = quantComprada + quantMesAtual;
-
+			lista.add(new Dividendo(quantMesAtual, dividendoMesAtual, sobra, quantComprada, i));
 		}
-		fundoInic.setTotalValue(fundoInic.getUnitValue() * quantMesAtual);
-		return fundoInic;
+//		fundoInic.setTotalValue(fundoInic.getUnitValue() * quantMesAtual);
+		return lista;
 	}
 	
 	public FundResponse fundPost(FundRequest request) {
@@ -53,7 +62,7 @@ public class FundService {
 		response.setTicker(request.getTicker());
 		response.setDividend(request.getDividend());
 		
-		respository.salveFund(response);
+		repository.salveFund(response);
 		
 		return response;
 	}
