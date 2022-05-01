@@ -10,22 +10,19 @@ import org.springframework.stereotype.Component;
 import com.dashboard.funds.model.Dividendo;
 import com.dashboard.funds.model.FundRequest;
 import com.dashboard.funds.model.FundResponse;
-import com.dashboard.funds.repository.Repository;
+import com.dashboard.funds.repository.FundRepository;
+import com.dashboard.funds.util.FundUtil;
 
 @Component
 public class FundService {
 
-	@Autowired
-	private Repository repository ;
 	
-	public FundResponse fundGet() {
-		return repository.getFund();
-	}
+	@Autowired
+	private FundRepository repository;
 	
 
 	public List<Dividendo> fundDiv10(Integer periodo) {
-		repository.criaFundo();
-		FundResponse fundoInic = repository.getFund();
+		FundResponse fundoInic = FundUtil.transformFundToFundReponse(repository.findByTicker("IRDM11"));
 		List<Dividendo> lista = new ArrayList<>();
 		Double dividendoMesAtual = 0d;
 		BigDecimal a = new BigDecimal(0);
@@ -62,7 +59,7 @@ public class FundService {
 		response.setTicker(request.getTicker());
 		response.setDividend(request.getDividend());
 		
-		repository.salveFund(response);
+//		repository.salveFund(response);
 		
 		return response;
 	}

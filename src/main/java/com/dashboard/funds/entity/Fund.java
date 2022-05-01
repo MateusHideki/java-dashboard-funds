@@ -1,16 +1,40 @@
-package com.dashboard.funds.model;
+package com.dashboard.funds.entity;
 
-public class FundRequest {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tb_fund")
+public class Fund {
+
+	@Id
+	@Column(name = "ticker")
 	private String ticker;
-	private Integer quant;
-	private Double unitValue;
-	private String nameCompany;
-	private Double min52weeks;
-	private Double max52weeks;
-	private Double dividendYield;
-	private Double dividend;
 
+	@Column(name = "quant")
+	private Integer quant;
+
+	@Column(name = "unitValue")
+	private Double unitValue;
+
+	@Column(name = "nameCompany")
+	private String nameCompany;
+
+	@Column(name = "min52weeks")
+	private Double min52weeks;
+
+	@Column(name = "max52weeks")
+	private Double max52weeks;
+
+	@Column(name = "dividendYield")
+	private Double dividendYield;
+
+	@Column(name = "dividend")
+	private Double dividend;
+	
+	
 	public Double getDividend() {
 		return dividend;
 	}
@@ -66,7 +90,7 @@ public class FundRequest {
 	public void setUnitValue(Double unitValue) {
 		this.unitValue = unitValue;
 	}
-
+	
 	public String getNameCompany() {
 		return nameCompany;
 	}
